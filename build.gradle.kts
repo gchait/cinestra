@@ -24,13 +24,28 @@ repositories {
 }
 
 dependencies {
-	implementation(libs.spring.boot.starter.data.jpa)
 	implementation(libs.spring.boot.starter.web)
+    implementation(libs.spring.boot.starter.data.jpa)
 	implementation(libs.htmx.spring.boot)
+    implementation(libs.sqlite.jdbc)
+	implementation(libs.hibernate.community.dialects)
+
+    implementation(libs.spark.core) {
+		exclude(group = "org.apache.logging.log4j", module = "log4j-slf4j2-impl")
+	}
+	implementation(libs.spark.sql) {
+		exclude(group = "org.apache.logging.log4j", module = "log4j-slf4j2-impl")
+	}
+	implementation(libs.spark.mllib) {
+		exclude(group = "org.apache.logging.log4j", module = "log4j-slf4j2-impl")
+	}
+
 	compileOnly(libs.lombok)
 	developmentOnly(libs.spring.boot.devtools)
+
 	annotationProcessor(libs.spring.boot.configuration.processor)
 	annotationProcessor(libs.lombok)
+
 	testImplementation(libs.spring.boot.starter.test)
 	testRuntimeOnly(libs.junit.platform.launcher)
 }

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: cinestra # Application identifier used in logs and monitoring
+
+  datasource:
+    url: jdbc:sqlite:cinestra.db # SQLite database file location (creates cinestra.db in project root)
+    driver-class-name: org.sqlite.JDBC # JDBC driver class for SQLite connections
+
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect # Hibernate dialect for SQLite-specific SQL
+    hibernate:
+      ddl-auto: update # Auto-create/update database schema based on JPA entities
+    show-sql: true # Log all SQL statements to console (useful for debugging)
+    properties:
+      hibernate:
+        "[format_sql]": true # Pretty-print SQL statements in logs for better readability
